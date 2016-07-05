@@ -1,3 +1,10 @@
+secrets/
+.DS_Store
+*.tfstate
+*.tfstate.backup
+!terraform.tfstate
+vendor/
+
 *.gem
 *.rbc
 /.config
