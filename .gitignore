@@ -1,9 +1,8 @@
-secrets/
 .DS_Store
 *.tfstate
 *.tfstate.backup
-!terraform.tfstate
 vendor/
+.idea/
 
 *.gem
 *.rbc
