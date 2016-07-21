@@ -1,6 +1,6 @@
-resource "aws_elb" "bar" {
-  name = "foobar-terraform-elb"
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+resource "aws_elb" "default" {
+  name = "balancer-${var.component}-${var.environment}"
+  availability_zones = ["${split(",", var.azs)}"]
 
   access_logs {
     bucket = "foo"
@@ -20,7 +20,7 @@ resource "aws_elb" "bar" {
     instance_protocol = "http"
     lb_port = 443
     lb_protocol = "https"
-    ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
+    ssl_certificate_id = "${var.smarla_ssl_certificate_arn}"
   }
 
   health_check {
@@ -31,7 +31,7 @@ resource "aws_elb" "bar" {
     interval = 30
   }
 
-  instances = ["${aws_instance.foo.id}"]
+  instances = ["${aws_instance.app.id}"]
   cross_zone_load_balancing = true
   idle_timeout = 400
   connection_draining = true

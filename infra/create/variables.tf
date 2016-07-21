@@ -37,3 +37,9 @@ variable "db_password" {}
 variable "bastion_ami" {}
 variable "bastion_instance_type" {}
 variable "bastion_private_ip" {}
+
+variable "app_ami" {}
+variable "app_instance_type" {}
+variable "app_private_ip" {}
+
+variable "smarla_ssl_certificate_arn" {}

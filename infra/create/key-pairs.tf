@@ -3,7 +3,7 @@ resource "aws_key_pair" "bastion" {
   public_key = ""
 }
 
-resource "aws_key_pair" "instance" {
+resource "aws_key_pair" "app" {
   key_name = "instance_key_${var.environment}"
   public_key = ""
 }

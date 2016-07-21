@@ -2,8 +2,12 @@ resource "aws_route53_record" "smarla-root" {
   zone_id = "${aws_route53_zone.smarla-public.zone_id}"
   name = "smarla.com."
   type = "A"
-  ttl = "3600"
-  records = ["${aws_eip.lb.public_ip}"]
+
+  alias {
+    name = "${aws_elb.default.dns_name}"
+    zone_id = "${aws_elb.default.zone_id}"
+    evaluate_target_health = true
+  }
 }
 
 resource "aws_route53_record" "smarla-www" {
